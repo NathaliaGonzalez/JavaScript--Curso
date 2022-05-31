@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>JAVASCRIPT</title>
+</head>
+
+<body>
+    <section class="layout">
+        <div class="header">
+            <fieldset>
+                <h1 id="forms">JAVASCRIPT</h1>
+
+            </fieldset>
+        </div>
+
+        <div class="mana">
+            <fieldset>
+                <legend>OPERACIONES BASICAS</legend>
+                <form id="formulario" name="">
+                    <label>Numero 1: </label>
+                    <input type="number" name="" id="a" autofocus placeholder="Escribe un numero">
+                    <button onclick="limpiar();">Limpiar campos</button>
+                    <br><br>
+                    <label>Numero 2: </label>
+                    <input type="number" name="" id="b" autofocus placeholder="Escribe un numero">
+                    <br><br>
+                    <button type="button" onclick="sumar();">Sumar</button>
+                    <button type="button" onclick="restar();">Restar</button>
+                    <button type="button" onclick="mult();">Multiplicar</button>
+                    <button type="button" onclick="div();">Dividir</button>
+                    <p>Resultado: <span id="resultado"></span></p>
+                    <br><br>
+                    <input id="contarstring" type="text" placeholder="Ingrese texto" onkeyup="getCharCount(this.value)">
+                    <p>El numero de caracteres es <b><span id="numcaracteres">0</span></b></p>
+                    <p>El texto en mayuscula: <b><span id="mayuscula"></span></b></p>
+                    <p>El texto en minuscula: <b><span id="minuscula"></span></b></p>
+                    <p>El primer caracter: <b><span id="primercaracter"></span></b></p>
+                    <p>El ultimo caracter: <b><span id="ultimocaracter"></span></b></p>
+                    <p>Todos los caracteres excepto el primero: <b><span id="excepto"></span></b></p>
+                    <p>Primero 10 caracteres: <b><span id="primeros10"></span></b></p>
+                    <p>Primero 10 caracteres, seguido de puntos suspensivos: <b><span id="suspensivos"></span></b></p>
+                    <p>Capitalizar: <b><span id="capitalizar"></span></b></p>
+                    <br><br>
+                </form>
+                <div class="container">
+                    <table class="table" id="nutrition-table">
+                        <h3>TABLA JS</h3>
+                        <thead>
+                            <tr>
+                                <th>Nutrition</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carbs</td>
+                                <td>17g</td>
+                            </tr>
+                            <tr>
+                                <td>Protein</td>
+                                <td>19g</td>
+                            </tr>
+                            <tr>
+                                <td>Fat</td>
+                                <td>5g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <table id="tablafila" border="1" CELLPADDING=10 CELLSPACING=0>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+
+                    </table>
+                    <br>
+                    <button onclick="insertarfila()">Agregar fila a la tabla</button>
+                </div>
+                <br>
+                <div>
+                    <label class="label" for="component-name">Ingresa tu edad</label>
+                    <input type="number" class="input" placeholder="Enter age" id="your-age" min="0" max="130" autocomplete="off" onkeyup="edad()">
+                </div>
+                <p>El próximo año tendras <span id="next-age"></span>  años.</p>
+                <br><br>
+
+                <a href="#forms">Volver al inicio</a>
+                <script>
+                    function limpiar() {
+                        document.getElementById('formulario').reset();
+                    }
+                    function sumar() {
+                        var a = parseInt(document.getElementById('a').value);
+                        var b = parseInt(document.getElementById('b').value);
+                        document.getElementById('resultado').innerHTML = a + b;
+
+                    }
+                    function restar() {
+                        var a = parseInt(document.getElementById('a').value);
+                        var b = parseInt(document.getElementById('b').value);
+                        document.getElementById('resultado').innerHTML = a - b;
+                    }
+                    function mult() {
+                        var a = parseInt(document.getElementById('a').value);
+                        var b = parseInt(document.getElementById('b').value);
+                        document.getElementById('resultado').innerHTML = a * b;
+                    }
+                    function div() {
+                        var a = parseInt(document.getElementById('a').value);
+                        var b = parseInt(document.getElementById('b').value);
+                        document.getElementById('resultado').innerHTML = a / b;
+                    }
+                    function getCharCount(name) {
+                        document.getElementById("numcaracteres").innerHTML = name.length;
+                        document.getElementById("mayuscula").innerHTML = name.toUpperCase();
+                        document.getElementById("minuscula").innerHTML = name.toLowerCase();
+                        document.getElementById("primercaracter").innerHTML = name[0];
+                        document.getElementById("ultimocaracter").innerHTML = name[name.length - 1];
+                        document.getElementById("excepto").innerHTML = name.substring(1);
+                        document.getElementById("primeros10").innerHTML = name.substring(0, 10);
+                        document.getElementById("suspensivos").innerHTML = name.substring(0, 10) + '...';
+                        document.getElementById("capitalizar").innerHTML = name[0].toUpperCase() + name.substring(1).toLowerCase();
+                    }
+                    function insertarfila() {
+                        document.getElementById("tablafila").innerHTML += `<tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>`;
+                    }
+                    function edad() {
+                        var a = parseInt(document.getElementById('your-age').value);
+                        document.getElementById('next-age').innerHTML = Number.parseInt(a, 10) + 1;
+                    
+                    }
+                </script>
+            </fieldset>
+        </div>
+
+    </section>
+</body>
+
+</html>
