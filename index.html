@@ -9,11 +9,11 @@
     <title>JAVASCRIPT</title>
 </head>
 
-<body>
+<body onload="checkCookie()">
     <section class="layout">
         <div class="header">
             <fieldset>
-                <h1 id="forms">JAVASCRIPT</h1>
+                <h1 id="forms">BIT DEGREE- JAVASCRIPT</h1>
 
             </fieldset>
         </div>
@@ -21,13 +21,241 @@
         <div class="mana">
             <fieldset>
                 <legend>OPERACIONES BASICAS</legend>
+
+                <div class="container">
+                    <h2>JavaScript Math.min() y Math.max()</h2>
+                    <p>Min y max entre estos numeros: 65, 951, 84, 20, -98, -235</p>
+
+                    <p> Min: <span id="min"></span> </p>
+                    <p> Max: <span id="max"></span> </p><br>
+                    <h2>Math.random()</h2>
+
+                    <p>Cada vez que se hace clic en el botón, getRndInteger(min, max) devuelve un número aleatorio entre
+                        0 y 10:</p>
+
+                    <button onclick="document.getElementById('test').innerHTML = getRndInteger(0, 10)">Button</button>
+
+                    <p id="test"></p> <br>
+                    <h2>JavaScript Math.round()</h2>
+                    <p>Redondeo de: 5.8 y 3.2</p>
+                    <p id="test1"></p>
+                    <p id="test2"></p>
+                    <h2>Hora</h2>
+                    <button onclick="myFunction()">Que hora es?</button>
+
+                    <p id="dateOut"></p> <br>
+
+                    <h2>JavaScript Array clasificacion</h2>
+
+                    <p>Haga clic en los botones para ordenar la matriz alfabética o numéricamente.</p>
+
+                    <button onclick="sortAlphabetically()">Ordenar alfabéticamente</button>
+                    <button onclick="sortNumerically()">Ordenar numéricamente</button>
+
+                    <p id="array"></p><br>
+
+                    <h2>Números JavaScript</h2>
+
+                    <p id="number"></p> <br>
+
+                    <h2>Clickable Dropdown</h2>
+                    <p>Haga clic en el botón para abrir el menú desplegable..</p>
+
+                    <div class="dropdown">
+                        <button id="sampleButton" class="dropbutton">Dropdown</button>
+                        <div id="sampleDropdown" class="dropdown-content">
+                            <a href="https://www.bitdegree.org/courses">Courses</a>
+                            <a href="https://www.bitdegree.org/course/learn-solidity-space-doggos">Space Doggo</a>
+                            <a href="https://www.bitdegree.org/tag/gamified">Gamified</a>
+                        </div>
+                    </div>
+                    <br><br>
+                    <h2>Validaciones</h2>
+                    <p>Introduzca su nombre y presione OK:</p>
+                    <form name="myForm" action="" onsubmit="return validateForm()" method="post">
+                        Nombre: <input type="text" name="firstName">
+                        <input type="submit" value="OK">
+                    </form>
+                    <p>Si deja vacio el campo mostrara una alerta</p>
+                    <p>Si el numero de caracteres de su nombre excede a 6 mostrara un mensaje</p>
+                    <p id="excede"></p> <br>
+                    <h2>Obtener el tamaño de la ventana</h2>
+                    <p id="window"></p> <br>
+                    <h2>JavaScript Alert</h2>
+                    <button onclick="firstFunction()">Pruebalo</button><br>
+                    <h2>JavaScript Confirm Box</h2>
+
+                    <button onclick="firstFunction2()">Pruebalo</button>
+
+                    <p id="Confirm"></p><br>
+                    <h2>JavaScript Prompt</h2>
+
+                    <button onclick="firstFunction3()">Pruebalo</button>
+
+                    <p id="pro"></p> <br>
+                    <h2>A Finished Cookie</h2>
+                    <p>Puede verificar la cookie agregada haciendo clic derecho en la página, luego seleccionando
+                        Inspeccionar> Aplicación> Cookies> seleccione la URL y desplácese hacia abajo para ver su
+                        entrada.</p>
+                    <br>
+                    <h2>JavaScript Descargar archivos</h2>
+                    <input type="text" id="example">
+                    <button id="button" onclick="download();">Boton de descarga</button>
+
+                </div>
+                <br><br>
+
+
+                <a href="#forms">Volver al inicio</a>
+                <script>
+                    document.getElementById("min").innerHTML = Math.min(65, 951, 84, 20, -98, -235);
+                    document.getElementById("max").innerHTML = Math.max(65, 951, 84, 20, -98, -235);
+                    function getRndInteger(min, max) {
+                        return Math.floor(Math.random() * (max - min)) + min;
+                    }
+                    document.getElementById("test1").innerHTML = Math.round(5.8);
+                    document.getElementById("test2").innerHTML = Math.round(3.2);
+                    function myFunction() {
+                        document.getElementById("dateOut").innerHTML = Date();
+                    }
+
+                    var points = [20, 50, 2, 4, 15, 10];
+                    document.getElementById("array").innerHTML = points;
+
+                    function sortAlphabetically() {
+                        points.sort();
+                        document.getElementById("array").innerHTML = points;
+                    }
+                    function sortNumerically() {
+                        points.sort((a, b) => { return a - b });
+                        document.getElementById("array").innerHTML = points;
+                    }
+
+                    var a = 2;
+                    var txt = "";
+                    while (a != Infinity) {
+                        a = a * a;
+                        txt = txt + a + "<br>";
+                    }
+                    document.getElementById("number").innerHTML = txt;
+
+                    // Get the button, and when the user clicks on it, execute sampleFunction
+                    document.getElementById("sampleButton").onclick = () => {
+                        sampleFunction()
+                    };
+
+                    /* sampleFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+                    function sampleFunction() {
+                        document.getElementById("sampleDropdown").classList.toggle("show");
+                    }
+                    function validateForm() {
+                        var x = document.forms["myForm"]["firstName"].value;
+                        var maxLength = 6;
+                        var strLength = x.length;
+                        if (x == "") {
+                            alert("Se debe completar el nombre");
+                            return false;
+                        } else if (strLength > maxLength) {
+                            document.getElementById('excede').innerHTML = "El numero de caracteres de su nombre excede a 6";
+                            return false;
+                        } else {
+                            document.getElementById('excede').innerHTML = "El numero de caracteres de su nombre menor o igual a 6";
+                            return false;
+                        }
+                    }
+                    var w = window.innerWidth
+                        || document.body.clientWidth
+                        || document.documentElement.clientWidth;
+
+                    var h = window.innerHeight
+                        || document.body.clientHeight
+                        || document.documentElement.clientHeight;
+
+                    var x = document.getElementById("window");
+                    x.innerHTML = "Ancho de la ventana interior del navegador: " + w + ", alto: " + h + ".";
+
+                    function firstFunction() {
+                        alert("Holis\nComo esta usted?");
+                    }
+                    function firstFunction2() {
+                        var r = confirm("Confirma algo!");
+                        if (r == true) {
+                            x = "Se presiono aceptar";
+                        }
+                        else {
+                            x = "Se presiono cancelar";
+                        }
+                        document.getElementById("Confirm").innerHTML = x;
+                    }
+                    function firstFunction3() {
+                        var txt;
+                        var person = prompt("Por favor ingresa tu nombre completo: ", "Harry Potter");
+                        if (person == null || person == "") {
+                            txt = "El usuario canceló el mensaje.";
+                        } else {
+                            txt = "Hola " + person + "! Como estas hoy?"
+                        }
+                        document.getElementById("pro").innerHTML = txt;
+                    }
+                    function setCookie(cname, cvalue, exdays) {
+                        var d = new Date();
+                        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                        var expires = "expires=" + d.toGMTString();
+                        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                    }
+
+                    function getCookie(cname) {
+                        var name = cname + "=";
+                        var decodedCookie = decodeURIComponent(document.cookie);
+                        var ca = decodedCookie.split(';');
+                        for (var i = 0; i < ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0) == ' ') {
+                                c = c.substring(1);
+                            }
+                            if (c.indexOf(name) == 0) {
+                                return c.substring(name.length, c.length);
+                            }
+                        }
+                        return "";
+                    }
+
+                    function checkCookie() {
+                        var user = getCookie("username");
+                        if (user != "") {
+                            alert("Welcome again " + user);
+                        } else {
+                            user = prompt("Please enter your name:", "");
+                            if (user != "" && user != null) {
+                                setCookie("username", user, 30);
+                            }
+                        }
+                    }
+                    function download() {
+                        var save = document.getElementById("example").value;
+                        var blob = new Blob([save], {
+                            type: "text/plain;charset=utf-8"
+                        });
+                        saveAs(blob, "yournewfile.txt");
+                    }
+                </script>
+            </fieldset>
+        </div>
+
+        <div class="mana">
+            <fieldset>
+                <h1>LEARN JAVA</h1>
+
+            </fieldset>
+            <fieldset>
+                <legend>OPERACIONES BASICAS</legend>
                 <form id="formulario" name="">
                     <label>Numero 1: </label>
-                    <input type="number" name="" id="a" autofocus placeholder="Escribe un numero">
+                    <input type="number" name="" id="a" placeholder="Escribe un numero">
                     <button onclick="limpiar();">Limpiar campos</button>
                     <br><br>
                     <label>Numero 2: </label>
-                    <input type="number" name="" id="b" autofocus placeholder="Escribe un numero">
+                    <input type="number" name="" id="b" placeholder="Escribe un numero">
                     <br><br>
                     <button type="button" onclick="sumar();">Sumar</button>
                     <button type="button" onclick="restar();">Restar</button>
@@ -87,9 +315,10 @@
                 <br>
                 <div>
                     <label class="label" for="component-name">Ingresa tu edad</label>
-                    <input type="number" class="input" placeholder="Enter age" id="your-age" min="0" max="130" autocomplete="off" onkeyup="edad()">
+                    <input type="number" class="input" placeholder="Enter age" id="your-age" min="0" max="130"
+                        autocomplete="off" onkeyup="edad()">
                 </div>
-                <p>El próximo año tendras <span id="next-age"></span>  años.</p>
+                <p>El próximo año tendras <span id="next-age"></span> años.</p>
                 <br><br>
 
                 <a href="#forms">Volver al inicio</a>
@@ -140,7 +369,7 @@
                     function edad() {
                         var a = parseInt(document.getElementById('your-age').value);
                         document.getElementById('next-age').innerHTML = Number.parseInt(a, 10) + 1;
-                    
+
                     }
                 </script>
             </fieldset>
